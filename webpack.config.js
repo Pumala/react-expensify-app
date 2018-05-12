@@ -8,6 +8,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = (env) => {
     console.log("PATH******************** ", path.join(__dirname, 'public', 'dist'));
     const isProduction = env === 'production';
+
+    console.log("MATCHED::", isProduction);
+
+
     const CSSExtract = new ExtractTextPlugin('styles.css');
     return {
         entry: "./src/app.js",
@@ -44,8 +48,10 @@ module.exports = (env) => {
         ],
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
-            contentBase: path.join(__dirname, 'public', 'dist'),
-            historyApiFallback: true
+            contentBase: path.join(__dirname, 'public'),
+            historyApiFallback: true,
+            publicPath: '/dist/'
+
         }
-    }
+    };
 };
