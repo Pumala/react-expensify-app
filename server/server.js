@@ -12,7 +12,4 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => {
     console.log("Server is listening on port 3000...");
-    console.log("Public Path: ", publicPath);
-    console.log("Sent File:", path.join(publicPath, 'index.html'));
-    console.log("PATH******************** ", path.join(__dirname, 'public', 'dist'));
 });

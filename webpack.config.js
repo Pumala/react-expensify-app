@@ -6,13 +6,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // __dirname
 
 module.exports = (env) => {
-    console.log("PATH******************** ", path.join(__dirname, 'public', 'dist'));
     const isProduction = env === 'production';
-
-    console.log("MATCHED::", isProduction);
-
-
     const CSSExtract = new ExtractTextPlugin('styles.css');
+
     return {
         entry: "./src/app.js",
         output: {
@@ -51,7 +47,6 @@ module.exports = (env) => {
             contentBase: path.join(__dirname, 'public'),
             historyApiFallback: true,
             publicPath: '/dist/'
-
         }
     };
 };
