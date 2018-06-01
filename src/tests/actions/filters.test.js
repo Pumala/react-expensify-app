@@ -4,7 +4,7 @@ import moment from 'moment';
 test('should generate set text filter action object with provided text value', () => {
     const action = setTextFilter('bill');
 
-    expect(action).toEqual({
+    expect(action).toEqual({ 
         type: 'SET_TEXT_FILTER',
         text: 'bill'
     });
