@@ -1,46 +1,112 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render Expense Summary correctly with 1 expense 1`] = `
-<div>
-  <p>
-    Expenses Summary El
-  </p>
-  <p>
-    You are viewing 
-    1
-     
-    expense
-     totaling 
-    $2.35
-    .
-  </p>
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      You are viewing 
+      <span>
+        1
+      </span>
+       
+      expense
+       totaling 
+      <span>
+        $2.35
+      </span>
+      .
+    </h1>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/create"
+      >
+        Add Expense
+      </Link>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`should render Expense Summary correctly with multiple expenses 1`] = `
-<div>
-  <p>
-    Expenses Summary El
-  </p>
-  <p>
-    You are viewing 
-    23
-     
-    expenses
-     totaling 
-    $47,583.74
-    .
-  </p>
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      You are viewing 
+      <span>
+        23
+      </span>
+       
+      expenses
+       totaling 
+      <span>
+        $47,583.74
+      </span>
+      .
+    </h1>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/create"
+      >
+        Add Expense
+      </Link>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`should render Expense Summary correctly with no expense 1`] = `
-<div>
-  <p>
-    Expenses Summary El
-  </p>
-  <p>
-    There are no expenses at this time.
-  </p>
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      You are viewing 
+      <span>
+        0
+      </span>
+       
+      expense
+       totaling 
+      <span>
+        $0.00
+      </span>
+      .
+    </h1>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/create"
+      >
+        Add Expense
+      </Link>
+    </div>
+  </div>
 </div>
 `;

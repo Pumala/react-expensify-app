@@ -1,14 +1,15 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { 
-    startAddExpense, 
-    addExpense, 
-    removeExpense, 
-    editExpense, 
+import {
+    startAddExpense,
+    addExpense,
+    removeExpense,
+    editExpense,
     startEditExpense,
-    setExpenses, 
-    startSetExpenses, 
-    startRemoveExpense } from '../../actions/expenses';
+    setExpenses,
+    startSetExpenses,
+    startRemoveExpense
+} from '../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import database from '../../firebase/firebase';
 
@@ -18,7 +19,7 @@ const defaultAuthState = { auth: { uid } };
 
 beforeEach((done) => {
     const expenseData = {};
-    expenses.forEach(({ id, description, note, amount, createdAt}) => {
+    expenses.forEach(({ id, description, note, amount, createdAt }) => {
         expenseData[id] = { description, note, amount, createdAt };
     })
     database.ref(`users/${uid}/expenses`).set(expenseData).then(() => done());
@@ -75,10 +76,10 @@ test('should edit expenses from firebase', (done) => {
         amount: 13375
     };
 
-    store.dispatch(startEditExpense( id, updates)).then(() => {
+    store.dispatch(startEditExpense(id, updates)).then(() => {
         const actions = store.getActions();
 
-        expect( actions[0] ).toEqual({
+        expect(actions[0]).toEqual({
             type: 'EDIT_EXPENSE',
             id,
             updates
@@ -133,8 +134,8 @@ test('should add expense with defaults to database and store', (done) => {
     const store = createMockStore(defaultAuthState);
 
     const defaultData = {
-        description:'',
-        note:'',
+        description: '',
+        note: '',
         amount: 0,
         createdAt: 0
     };

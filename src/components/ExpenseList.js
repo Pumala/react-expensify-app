@@ -6,34 +6,37 @@ import selectExpenses from '../selectors/expenses';
 
 export const ExpenseList = (props) => {
     return (
-        <div>
-            <h1>Expense List</h1>
-            <ul>
-            {
-                props.expenses.length === 0 ? (
-                    <li>No expenses found.</li>
-                ) : (
-                    props.expenses.map((expense) => {
-                        return <ExpenseListItem key={expense.id} {...expense} />
-        
-                        // expense={expense} or {...expense}
-                        // similar, not the same
-                    })
-                )
-            }
-            </ul>
+        <div className="content-container">
+            <div className="list-header">
+                <div className="show-for-mobile">Expenses</div>
+                <div className="show-for-desktop">Expense</div>
+                <div className="show-for-desktop">Amount</div>
+            </div>
+                <div className="list-body">
+                {
+                    props.expenses.length === 0 ? (
+                        <div className="list-item list-item--message">
+                            <span>No expenses</span>
+                        </div>
+                    ) : (
+                        props.expenses.map((expense) => {
+                            return <ExpenseListItem key={expense.id} {...expense} />
+                        })
+                    )
+                }
+                </div>
         </div>
     )
 };
 
 // this function lets us determine what info we want from the store that 
-    // we want our component to access
+// we want our component to access
 const mapStateToProps = (state) => ({
     expenses: selectExpenses(state.expenses, state.filters)
 })
 
 // export HOC
-export default connect(mapStateToProps)(ExpenseList); 
+export default connect(mapStateToProps)(ExpenseList);
 
 
 

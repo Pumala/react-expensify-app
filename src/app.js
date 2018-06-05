@@ -10,6 +10,7 @@ import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import {firebase} from './firebase/firebase';
+import LoadingPage from './components/LoadingPage';
 
 const store = configureStore();
 
@@ -29,8 +30,11 @@ const renderApp = () => {
     }
 };
 
+ReactDOM.render(<LoadingPage />, document.getElementById("box"));
+
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+        console.log('User Id:', user.uid);
         store.dispatch(login(user.uid));
         store.dispatch(startSetExpenses()).then(() => {
             renderApp();
@@ -38,7 +42,7 @@ firebase.auth().onAuthStateChanged((user) => {
                 history.push('/dashboard');
             }
         });
-        console.log('loggined in');
+        console.log('loggined in', history);
     } else {
         console.log('Logged out!');
         store.dispatch(logout());
