@@ -42,8 +42,6 @@ test('should remove expense from firebase', (done) => {
     store.dispatch(startRemoveExpense({ id })).then(() => {
         const actions = store.getActions();
 
-        console.log("PRINTING ACTIONS:", actions);
-
         expect(actions[0]).toEqual({
             type: 'REMOVE_EXPENSE',
             id

@@ -34,7 +34,6 @@ ReactDOM.render(<LoadingPage />, document.getElementById("box"));
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        console.log('User Id:', user.uid);
         store.dispatch(login(user.uid));
         store.dispatch(startSetExpenses()).then(() => {
             renderApp();
@@ -42,9 +41,7 @@ firebase.auth().onAuthStateChanged((user) => {
                 history.push('/dashboard');
             }
         });
-        console.log('loggined in', history);
     } else {
-        console.log('Logged out!');
         store.dispatch(logout());
         renderApp();
         history.push('/');        
